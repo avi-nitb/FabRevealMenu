@@ -1,5 +1,6 @@
 package com.avinash.fabrevealmenu;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,16 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        setting_fab_layout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(MainActivity.this, BottomSheetAnchoringActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
 
@@ -56,6 +67,9 @@ public class MainActivity extends AppCompatActivity
         setting_fab_layout.startAnimation(fabClose);
         update_fab_layout.startAnimation(fabClose);
         shop_fab_layout.startAnimation(fabClose);
+        shop_fab_layout.setClickable(false);
+        setting_fab_layout.setClickable(false);
+        update_fab_layout.setClickable(false);
         fab_main.startAnimation(rotateAnticlockwise);
         fabExpanded=false;
     }
@@ -63,7 +77,9 @@ public class MainActivity extends AppCompatActivity
         setting_fab_layout.startAnimation(fabOpen);
         update_fab_layout.startAnimation(fabOpen);
         shop_fab_layout.startAnimation(fabOpen);
-
+        shop_fab_layout.setClickable(true);
+        setting_fab_layout.setClickable(true);
+        update_fab_layout.setClickable(true);
         fab_main.startAnimation(rotateClockwise);
         fabExpanded= true;
     }
